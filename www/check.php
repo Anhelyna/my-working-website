@@ -36,7 +36,7 @@ echo json_encode($emails);*/
 
 require 'configo.php';
 
-$email = $_POST['email'] ?? '';
+$email = $_POST['emailcheck'] ?? '';
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     echo "Invalid email!";

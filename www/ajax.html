@@ -1,152 +1,3 @@
-<!--<!DOCTYPE html>
-<html>
-<head>
-<title>AJAX Email Demo</title>
-
-<script>
-console.log("AJAX Script Loaded");
-
-
-// Store email
-function storeEmail() {
-    const email = document.getElementById('storeEmail').value;
-
-    fetch('store.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: 'email=' + encodeURIComponent(email)
-    })
-    .then(res => res.text())
-    .then(data => {
-        document.getElementById('storeResult').innerHTML = data;
-    });
-
-    return false; // Stop page reload
-}
-
-// Check email
-function checkEmail() {
-    const email = document.getElementById('checkEmail').value;
-
-    fetch('check.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: 'email=' + encodeURIComponent(email)
-    })
-    .then(res => res.text())
-    .then(data => {
-        document.getElementById('checkResult').innerHTML = data;
-    });
-
-    return false; // Stop page reload
-}
-
-function loadText() {
-    fetch('ajax_info.txt')  // path to your text file
-        .then(response => {
-            if (!response.ok) throw new Error('Network response was not ok');
-            return response.text();
-        })
-        .then(data => {
-            document.getElementById('textContainer').innerText = data;
-        })
-        .catch(error => {
-            document.getElementById('textContainer').innerText = 'Error loading file';
-            console.error('Error:', error);
-        });
-}
-</script>
-
-
-
-</head>
-<body>
-
-        <h1>AJAX Example Page</h1>
-        <h3>This page demonstrates AJAX - The XMLHttpRequest Object and GET and POST</h3>
-<a href="./index.html" target="_blank">Go Back To My Home Page</a>
-
-
-
-<h2><p id="demo">AJAX response from the server</p></h2>
-<button  id ="btn" type="button" onclick="loadText()">Load Text</button>
-
-<p id="emailMsg"></p>
-
-<hr style="border: 2px solid black; width: 100%; margin: 20px 0;">
-
-
-
-<h2>Store Email</h2>
-<form onsubmit="return storeEmail();">
-    <input type="email" id="storeEmail" required>
-    <button type="submit">Store Email</button>
-</form>
-<div id="storeResult" style="margin-top:10px;color:blue;"></div>
-
-
-<hr>
-
-
-
-<h2>Check Email</h2>
-<form onsubmit="return checkEmail();">
-    <input type="email" id="checkEmail" required>
-    <button type="submit">Check Email</button>
-</form>
-<div id="checkResult" style="margin-top:10px;color:green;"></div>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Email Store</title>
-</head>
-<body>
-
-<h2>Enter Your Email</h2>
-
-<input type="email" id="email">
-<button onclick="saveEmail()">Save Email</button>
-
-<p id="message"></p>
-
-<h3>Saved Emails:</h3>
-<div id="list"></div>
-
-<script>
-function saveEmail() {
-    const email = document.getElementById("email").value;
-
-    const formData = new FormData();
-    formData.append("email", email);
-
-    fetch("store.php", {
-        method: "POST",
-        body: formData
-    })
-    .then(r => r.text())
-    .then(data => {
-        document.getElementById("message").innerHTML = data;
-        loadEmails();
-    });
-}
-
-function loadEmails() {
-    fetch("check.php")
-    .then(r => r.json())
-    .then(list => {
-        document.getElementById("list").innerHTML = list.join("<br>");
-    });
-}
-
-loadEmails();
-</script>
-
-</body>
-</html>-->
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -169,9 +20,10 @@ loadEmails();
     <li><a href="./COSCLAB.html" target="_blank">Go Back To My COSC Lab Page</a></li>
 </ul>
     </div>
+    
     <h1>AJAX: demonstrate AJAX - The XMLHttpRequest Object</h1>
     <h2><p id="demo">AJAX response from the server</p></h2> 
-    <button type="button" onclick="loadText()">Load Text</button> 
+    <button type="button" id="toggleBtn" onclick="loadText()">Load Text</button> 
     <p id="emailMsg"></p>
     
 
@@ -186,7 +38,7 @@ loadEmails();
 <hr style="border: 1px solid black; width: 100%; margin: 20px 0;">
 
  <h2>Method: GET an email from database</h2>
-<input type="email" id="email">
+<input type="email" id="emailcheck">
 <p id="m"></p>
 <button onclick="checkEmail()">Get Email From The Database</button>
 <hr style="border: 1px solid black; width: 100%; margin: 20px 0;">
@@ -195,12 +47,24 @@ loadEmails();
 
 <script>
 
+    let isOpen = false;
     function loadText() { 
+        isOpen = !isOpen;    
+    const btn = document.getElementById("toggleBtn");
+    if (isOpen) {
+        btn.innerText = "Close Text";
         var xhttp = new XMLHttpRequest(); 
         xhttp.onload = function() { document.getElementById("demo").innerHTML 
         = this.responseText; }; 
         xhttp.open("GET", "ajax_info.txt", true);
-        xhttp.send(); } 
+        xhttp.send(); 
+    } else {
+        btn.innerText = "Load Text";
+        document.getElementById("demo").innerHTML = "";
+    }
+}
+
+
         
 function saveEmail() {
     const email = document.getElementById("email").value;
@@ -216,15 +80,18 @@ function saveEmail() {
     .then(data => {
         document.getElementById("message").innerHTML = data;
         loadEmails();
+    })
+     .catch(err => {
+        console.error("Save error:", err);
     });
 }
 
 function checkEmail() {
-    const email = document.getElementById("email").value;
+    const emailcheck = document.getElementById("emailcheck").value;
     const m = document.getElementById("m");
     m.innerHTML = "Checking...";
     const formData = new FormData();
-    formData.append("email", email);
+    formData.append("emailcheck", emailcheck);
 
     fetch("check.php", {
         method: "POST",
