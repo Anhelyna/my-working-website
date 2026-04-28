@@ -11,7 +11,7 @@
         <img src="./main_picture.jpg" alt="Profile Photo" />
         <div class="name">Anhelyna Kikena</div>
     </div>
-
+    <div class="custom-cursor" id="cc-dom"></div>
     <div class="title-box">
         <h1>My Resume Home Page</h1>
         <h3>This website is a collection of web pages that may interest prospective employers.</h3>
@@ -26,8 +26,15 @@
             <li><a href="./r_s_p_game.html" target="_blank">Play some Rock Paper Scissors Game</a></li>
         </ul>
     </div>
+    
+<script>
+const cursor = document.getElementById("cc-dom");
 
-    <div class="corner-box">bottom-right</div>
+document.addEventListener("mousemove", function(e) {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+});
+</script>
 
 
 </body>

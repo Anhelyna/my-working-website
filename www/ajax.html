@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="header">
-        <img src="./download.jpg" alt="Profile Photo" />
+        <img src="./main_picture.jpg" alt="Profile Photo" />
         <div class="name">Anhelyna Kikena</div>
     </div>
 
@@ -42,11 +42,16 @@
 <p id="m"></p>
 <button onclick="checkEmail()">Get Email From The Database</button>
 <hr style="border: 1px solid black; width: 100%; margin: 20px 0;">
-
+<div class="custom-cursor" id="cc-dom"></div>
 
 
 <script>
+    const cursor = document.getElementById("cc-dom");
 
+    document.addEventListener("mousemove", function(e) {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+    });
     let isOpen = false;
     function loadText() { 
         isOpen = !isOpen;    

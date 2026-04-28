@@ -54,7 +54,7 @@
 <body>
 
 <div class="header">
-        <img src="./download.jpg" alt="Profile Photo" />
+        <img src="./main_picture.jpg" alt="Profile Photo" />
         <div class="name">Anhelyna Kikena</div>
     </div>
 
@@ -115,5 +115,14 @@ function myFunction() {
 <h2>Report: Output of all table rows</h2>
 <a href="view_users.php" target="_blank">This link will forward you to all the data and output from the table</a>
 </div>
+<div class="custom-cursor" id="cc-dom"></div>
+<script>
+const cursor = document.getElementById("cc-dom");
+
+document.addEventListener("mousemove", function(e) {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+});
+</script>
 </body>
 </html>

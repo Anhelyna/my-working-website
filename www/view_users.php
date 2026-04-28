@@ -49,6 +49,17 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 ?>
+
 </div>
+
+<div class="custom-cursor" id="cc-dom"></div>
+<script>
+const cursor = document.getElementById("cc-dom");
+
+document.addEventListener("mousemove", function(e) {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+});
+</script>
 </body>
 </html>
