@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rock Paper Scissors</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: #f0f4ff;
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 40px;
+        margin-bottom: 20px;
+        color: #141415;
+       
+    }
+
+
+    .choices {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 40px;
+    }
+
+    .choice-btn img {
+        width: 120px;
+        height: 140px;
+        object-fit: contain;
+        cursor: pointer;
+        transition: 0.3s;
+        border-radius: 20px;
+    }
+
+    .choice-btn img:hover {
+        transform: scale(1.15);
+        box-shadow: 0 0 20px
+        rgba(152, 179, 203, 0.699);
+    }
+
+    #resultText {
+        font-size: 36px;
+        margin-top: 20px;
+        height: 50px;
+    }
+
+    /* spark animation for win */
+    @keyframes spark {
+        0% { color: rgb(0, 13, 255); text-shadow: 0 0 10px rgb(0, 55, 253); }
+        50% { color: rgb(250, 248, 246); text-shadow: 0 0 30px rgb(247, 246, 244); }
+        100% { color: rgb(0, 30, 255); text-shadow: 0 0 10px rgb(0, 47, 255); }
+    }
+
+    /* dull fade for loss */
+    @keyframes dull {
+        0% { opacity: 1; }
+        100% { opacity: 0.3; }
+    }
+
+    .win {
+        animation: spark 1s infinite;
+    }
+
+    .lose {
+        animation: dull 1s infinite;
+    }
+
+    #computerArea {
+        margin-top: 20px;
+    }
+
+    #computerImage {
+        width: 160px;
+        height: 160px;
+        object-fit: contain;
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+
+<h1>Rock Paper Scissors</h1>
+<h2 style="
+color:rgba(152, 179, 203, 0.699)">Make your choice</h2>
+
+<div class="choices">
+    <div class="choice-btn" onclick="playGame('rock')">
+        <img src="r.jpg" alt="rock">
+    </div>
+
+    <div class="choice-btn" onclick="playGame('paper')">
+        <img src="p.jpg" alt="paper">
+    </div>
+
+    <div class="choice-btn" onclick="playGame('scissors')">
+        <img src="s.jpg" alt="scissors">
+    </div>
+</div>
+
+<h2 id="resultText"></h2>
+
+<div id="computerArea">
+    <h2 style="
+color:rgba(152, 179, 203, 0.699)">Oponent chose:</h2>
+    <img id="computerImage" src="default.jpg" alt="">
+</div>
+<br><br>
+<div><a href="./index.html" target="_blank" style="
+color: black;
+size: 20px;">Go Back To My Home Page</a></li>
+</div>
+
+<script>
+const images = {
+    rock: "r.jpg",
+    paper: "p.jpg",
+    scissors: "s.jpg"
+};
+
+function getUserChoice(choice) {
+    return choice;
+}
+
+function getComputerChoice() {
+    const pick = ["rock", "paper", "scissors"];
+    return pick[Math.floor(Math.random() * 3)];
+}
+
+function determineWinner(user, computer) {
+    if (user === computer) return "tie";
+
+    if (user === "rock") return computer === "paper" ? "lose" : "win";
+    if (user === "paper") return computer === "scissors" ? "lose" : "win";
+    if (user === "scissors") return computer === "rock" ? "lose" : "win";
+}
+
+function playGame(userChoice) {
+    const computerChoice = getComputerChoice();
+    const result = determineWinner(userChoice, computerChoice);
+
+    const resultText = document.getElementById("resultText");
+    const compImg = document.getElementById("computerImage");
+
+    // Set computer image
+    compImg.src = images[computerChoice];
+
+    // Clear animations
+    resultText.className = "";
+
+    if (result === "tie") {
+        resultText.textContent = "It's a tie!";
+    } else if (result === "win") {
+        resultText.textContent = "You won!";
+        resultText.classList.add("win");
+    } else {
+        resultText.textContent = "You lost!";
+        resultText.classList.add("lose");
+    }
+}
+</script>
+
+</body>
+</html>

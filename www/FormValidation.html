@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation Page</title>
+<link rel="stylesheet" href="style.css" />
+    <script>
+    function validateForm() {
+        let form = document.forms["mainForm"];
+
+        let fname = form["fname"].value;
+        let lname = form["lname"].value;
+        let email = form["email"].value;
+        let phone_number = form["phone_number"].value;
+
+        if (fname === "") {
+            alert("First name must be filled out");
+            return false;
+        }
+        if (lname === "") {
+            alert("Last name must be filled out");
+            return false;
+        }
+        if (email === "") {
+            alert("Email must be filled out");
+            return false;
+        }
+        if (phone_number === "") {
+            alert("Telephone must be filled out");
+            return false;
+        }
+        // Email must contain @
+        if (!email.includes("@")) {
+            alert("Email must contain '@'");
+            return false;
+        }
+        const allowedExtensions = [".com", ".org", ".uk", ".edu"];
+
+        if (!allowedExtensions.some(ext => email.endsWith(ext))) {
+          alert("Email must end with .com, .org, .uk, or .edu");
+          return false;
+        }
+        // Phone format 555-555-5555
+        let phonePattern = /^\d{3}-\d{3}-\d{4}$/;
+
+        if (!phonePattern.test(phone_number)) {
+            alert("Telephone must be in the format 555-555-5555");
+            return false;
+        }
+    }
+        </script>
+ 
+</head>
+
+<body>
+
+<div class="header">
+        <img src="./download.jpg" alt="Profile Photo" />
+        <div class="name">Anhelyna Kikena</div>
+    </div>
+
+    <div class="title-box">
+        <h1>Form Validation Page</h1>
+        <h2>HTML Forms</h2>
+    </div>
+
+    <div class="links">
+    <ul>
+      <li><a href="./index.html" target="_blank">Go Back To My Home Page</a></li>
+    <li><a href="./COSCLAB.html" target="_blank">Go Back To My COSC Lab Page</a></li>
+</ul>
+    </div>
+
+
+<div class="links"><p style = "color: rgb(3, 71, 3); font-size: 30px; font-weight: bold;">JavaScript Form Validation</p></div>
+
+<div class="links">
+<form name="mainForm" action="form.php" method="post" onsubmit="return validateForm()">
+
+  First Name: <input type="text" name="fname"><br><br>
+
+  Last Name: <input type="text" name="lname"><br><br>
+
+  Email: <input type="email" name="email"><br><br>
+
+  Telephone: <input type="text" name="phone_number"><br><br>
+
+  <input id ="btn" type="submit" value="Submit">
+</form>
+
+<p>JavaScript Numeric Form Validation (JavaScript)</p>
+<p>Please enter the current Year</p>
+<input id="year">
+
+<button id = "btn" type="button" onclick="myFunction()">Submit</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  // Get the value of the input field with id="numb"
+  let x = document.getElementById("year").value;
+  // If x is Not a Number or less than one or greater than 2025
+  let text;
+  if (isNaN(x) || x != 2026) {
+    text = "Input not valid";
+  } else {
+    text = "Input valid";
+  }
+  document.getElementById("demo").innerHTML = text;
+}
+</script>
+</div>
+<div class="links">
+<p>If you click the "Submit" button, the form-data will be sent to a page called "/form.php".</p>
+<h2>Report: Output of all table rows</h2>
+<a href="view_users.php" target="_blank">This link will forward you to all the data and output from the table</a>
+</div>
+</body>
+</html>

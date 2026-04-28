@@ -1,0 +1,10 @@
+<h1>AJAX response from the server</h1>
+<p>Readystate = 1 and server connection established.</p>
+<p>Readystate = 2 and Request has been received.</p>
+<p>Readystate = 3 and Request is being processed.</p>
+<p>Readystate = 4 and Request finished and Response is ready.</p>
+<h2>The REQUEST Object retrieved the contents of response PROPERTY text below from the server, with  a GET request.</h2>
+<h2 style="color:red;">Anhelyna`s ajax_info.txt DECEMBER 01</h2>
+<p>AJAX is not a programming language.</p>
+<p>AJAX is a technique for accessing web servers from a web page.</p>
+<p>AJAX stands for Asynchronous JavaScript And XML.</p>

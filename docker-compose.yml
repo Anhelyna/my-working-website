@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  web:
+    
+    image: php:8.2-apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ./www:/var/www/html
+    environment:
+      DB_HOST: db
+      DB_NAME: mydb
+      DB_USER: user
+      DB_PASS: password  
+    depends_on:
+      - db
+
+  cpp:
+    build: ./cpp
+    volumes:
+      - ./www:/app
+
+  db:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+
+  node:
+    image: node:20
+
+  python:
+    image: python:3.11
+
+  
+
