@@ -39,3 +39,13 @@ Runs on port: 8080
 
 ### Database (MySQL)
 Runs on port: 3306
+
+## Programming Examples
+
+This repository includes selected examples of my work in:
+
+### **Assembly Language** – low-level programming, memory operations, and system-level logic  
+
+### **Java** – object-oriented programming, data structures, and application development  
+
+All projects were completed as part of my academic coursework.
