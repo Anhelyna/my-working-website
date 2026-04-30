@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Form Validation Page</title>
-<link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css" />
     <script>
     function validateForm() {
         let form = document.forms["mainForm"];
@@ -47,82 +47,148 @@
             return false;
         }
     }
-        </script>
+</script>
  
 </head>
 
 <body>
-
-<div class="header">
-        <img src="./main_picture.jpg" alt="Profile Photo" />
-        <div class="name">Anhelyna Kikena</div>
+    <section class="section hero">
+    <div class="container">
+      <h1 class="reveal">Form Validation Page</h1>
+      <p class="reveal">HTML Forms</p>
     </div>
-
-    <div class="title-box">
-        <h1>Form Validation Page</h1>
-        <h2>HTML Forms</h2>
-    </div>
-
-    <div class="links">
-    <ul>
-      <li><a href="./index.html" target="_blank">Go Back To My Home Page</a></li>
-    <li><a href="./COSCLAB.html" target="_blank">Go Back To My COSC Lab Page</a></li>
-</ul>
-    </div>
+  </section>
 
 
-<div class="links"><p style = "color: rgb(3, 71, 3); font-size: 30px; font-weight: bold;">JavaScript Form Validation</p></div>
+<section class="section">
+    <div class="container">
+      <h2 class="reveal">JavaScript Form Validation</h2>
+     <br><br>
+        
+        <div class="links">
+        <form name="mainForm" action="form.php" method="post" onsubmit="return validateForm()">
 
-<div class="links">
-<form name="mainForm" action="form.php" method="post" onsubmit="return validateForm()">
+        First Name: <input type="text" name="fname"><br><br>
 
-  First Name: <input type="text" name="fname"><br><br>
+        Last Name: <input type="text" name="lname"><br><br>
 
-  Last Name: <input type="text" name="lname"><br><br>
+        Email: <input type="email" name="email"><br><br>
 
-  Email: <input type="email" name="email"><br><br>
+        Telephone: <input type="text" name="phone_number"><br><br>
 
-  Telephone: <input type="text" name="phone_number"><br><br>
+        <input  id ="btn" type="submit" value="Submit">
+        </form>
+        <br><br><br>
+        <h2 class="reveal">JavaScript Numeric Form Validation (JavaScript)</h2>
+        <p style="color: black; font-style:normal; font-size: 25px;">Please enter the current Year</p>
+        <input id="year">
 
-  <input id ="btn" type="submit" value="Submit">
-</form>
+        <button  id = "btn" type="button" onclick="myFunction()">Submit</button>
 
-<p>JavaScript Numeric Form Validation (JavaScript)</p>
-<p>Please enter the current Year</p>
-<input id="year">
+        <p id="demo"></p>
 
-<button id = "btn" type="button" onclick="myFunction()">Submit</button>
+        <script>
+        function myFunction() {
+        // Get the value of the input field with id="numb"
+        let x = document.getElementById("year").value;
+        // If x is Not a Number or less than one or greater than 2025
+        let text;
+        if (isNaN(x) || x != 2026) {
+            text = "Input not valid";
+        } else {
+            text = "Input valid";
+        }
+        document.getElementById("demo").innerHTML = text;
+        }
+        </script>
+        </div>
+        <div class="links">
+            <br><br><br>
 
-<p id="demo"></p>
 
-<script>
-function myFunction() {
-  // Get the value of the input field with id="numb"
-  let x = document.getElementById("year").value;
-  // If x is Not a Number or less than one or greater than 2025
-  let text;
-  if (isNaN(x) || x != 2026) {
-    text = "Input not valid";
-  } else {
-    text = "Input valid";
-  }
-  document.getElementById("demo").innerHTML = text;
-}
-</script>
-</div>
-<div class="links">
-<p>If you click the "Submit" button, the form-data will be sent to a page called "/form.php".</p>
-<h2>Report: Output of all table rows</h2>
-<a href="view_users.php" target="_blank">This link will forward you to all the data and output from the table</a>
-</div>
+        <p>If you click the "Submit" button, the form-data will be sent to a page called "/form.php".</p>
+        
+        <h2>Report: Output of all table rows</h2>
+        <a style="color: black; font-style: italic; font-size: 25px;" href="view_users.php" target="_blank">This link will forward you to all the data and output from the table</a>
+        </div>
+        </div>
+        </section>
+
 <div class="custom-cursor" id="cc-dom"></div>
-<script>
-const cursor = document.getElementById("cc-dom");
 
-document.addEventListener("mousemove", function(e) {
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
-});
-</script>
+<section class="projects">
+
+  <div class="projects-sticky">
+    <div class="projects-track">
+
+        <div class="project panel">
+        <h3>Home Page</h3>
+        <a href="./index.html">View</a>
+      </div>
+
+      <div class="project panel">
+        <h3>Resume Website</h3>
+        <a href="./ResumeDownLoad.html">View</a>
+      </div>
+
+      <div class="project panel">
+        <h3>WordPress Website</h3>
+        <a href="https://internmentmuseum.ca">View</a>
+      </div>
+
+      <div class="project panel">
+        <h3>COSC Lab</h3>
+        <a href="./COSCLAB.html">View</a>
+      </div>
+
+      <div class="project panel">
+        <h3>Rock Paper Scissors</h3>
+        <a href="./r_s_p_game.html">Play</a>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+<script>
+ const reveals = document.querySelectorAll(".reveal");
+
+        function revealOnScroll() {
+        const triggerBottom = window.innerHeight * 0.85;
+
+        reveals.forEach(el => {
+            const rect = el.getBoundingClientRect();
+
+            if (rect.top < triggerBottom) {
+            el.classList.add("active");
+            }
+        });
+        }
+
+        window.addEventListener("scroll", revealOnScroll);
+        revealOnScroll();
+
+        const track = document.querySelector(".projects-track");
+        const section = document.querySelector(".projects");
+
+        window.addEventListener("scroll", () => {
+        const rect = section.getBoundingClientRect();
+        const scrollProgress = -rect.top / (rect.height - window.innerHeight);
+
+        const maxTranslate = track.scrollWidth - window.innerWidth;
+
+        if (scrollProgress >= 0 && scrollProgress <= 1) {
+            track.style.transform = `translateX(-${scrollProgress * maxTranslate}px)`;
+        }
+        });
+        const cursor = document.getElementById("cc-dom");
+
+        document.addEventListener("mousemove", function(e) {
+            cursor.style.left = e.clientX + "px";
+            cursor.style.top = e.clientY + "px";
+        });
+
+        </script>
+
 </body>
 </html>

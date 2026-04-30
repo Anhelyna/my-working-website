@@ -1,6 +1,6 @@
 <?php
 
-require 'configo.php';
+require 'config_path.php';
 
 $email = $_POST['emailcheck'] ?? '';
 

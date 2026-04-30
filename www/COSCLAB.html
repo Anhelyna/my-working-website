@@ -5,26 +5,94 @@
        <link rel="stylesheet" href="style.css" />
             </head>
     <body>
-         <div class="header">
-        <img src="./main_picture.jpg" alt="Profile Photo" />
-        <div class="name">Anhelyna Kikena</div>
+ 
+  <section class="section hero">
+    <div class="container">
+      <h1 class="reveal">COSCC Lab Page</h1>
+      <p class="reveal">This page is all about Form Validation, Data Entry and Report, AJAX demonstrate AJAX - The XML Http Request Object and AJAX demonstrate GET and POST</p>
+    </div>
+  </section>
+
+<section class="section">
+
+  <div class="container">
+    <div>
+        <h1>Form Validation</h1>
+        <a style="color: black; font-style: italic; font-size: 25px;" href="./FormValidation.html">View</a>
+      </div>
+<br><br><br>
+      <div >
+        <h1>AJAX: demonstrate AJAX - The XMLHttpRequest Object and GET and POST</h1>
+        <a style="color: black; font-style: italic; font-size: 25px;" href="./ajax.html">View</a>
+      </div>
+
     </div>
 
-    <div class="title-box">
-        <h1>COSCC Lab Page</h1>
-        <h3>This page is all about Form Validation, Data Entry and Report, AJAX demonstrate AJAX - The XML Http Request Object and AJAX demonstrate GET and POST </h3>
-    </div>
-<div class="links"><a href="./index.html" target="_blank">Go Back To My Home Page</a></li>
-</div>
+</section>
 
-    <div class="links">
-    <ul>
-<li><a href="./FormValidation.html" target="_blank">Form Validation</a></li>
-<li><a href="./ajax.html" target="_blank">AJAX: demonstrate AJAX - The XMLHttpRequest Object and GET and POST</a></li>
-</ul>
-</div>
 <div class="custom-cursor" id="cc-dom"></div>
+
+<section class="projects">
+
+  <div class="projects-sticky">
+    <div class="projects-track">
+
+         <div class="project panel">
+        <h3>Home page</h3>
+        <a href="./index.html">View</a>
+      </div>
+
+      <div class="project panel">
+        <h3>Resume Website</h3>
+        <a href="./ResumeDownLoad.html">View</a>
+      </div>
+
+      <div class="project panel">
+        <h3>WordPress Website</h3>
+        <a href="https://internmentmuseum.ca">View</a>
+      </div>
+
+      <div class="project panel">
+        <h3>Rock Paper Scissors</h3>
+        <a href="./r_s_p_game.html">Play</a>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
 <script>
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+  const triggerBottom = window.innerHeight * 0.85;
+
+  reveals.forEach(el => {
+    const rect = el.getBoundingClientRect();
+
+    if (rect.top < triggerBottom) {
+      el.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+
+const track = document.querySelector(".projects-track");
+const section = document.querySelector(".projects");
+
+window.addEventListener("scroll", () => {
+  const rect = section.getBoundingClientRect();
+  const scrollProgress = -rect.top / (rect.height - window.innerHeight);
+
+  const maxTranslate = track.scrollWidth - window.innerWidth;
+
+  if (scrollProgress >= 0 && scrollProgress <= 1) {
+    track.style.transform = `translateX(-${scrollProgress * maxTranslate}px)`;
+  }
+});
 const cursor = document.getElementById("cc-dom");
 
 document.addEventListener("mousemove", function(e) {
@@ -32,5 +100,5 @@ document.addEventListener("mousemove", function(e) {
     cursor.style.top = e.clientY + "px";
 });
 </script>
-    </body>
+</body>
 </html>

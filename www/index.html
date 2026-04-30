@@ -1,33 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Resume Home Page</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Resume</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="header">
-        <img src="./main_picture.jpg" alt="Profile Photo" />
-        <div class="name">Anhelyna Kikena</div>
+<div class="custom-cursor" id="cc-dom"></div>
+  <!-- HERO -->
+  <section class="section hero">
+    <div class="container">
+      <h1 class="reveal">Hi, I'm Anhelyna</h1>
+      <p class="reveal">Computer Information Systems </p>
     </div>
-    <div class="custom-cursor" id="cc-dom"></div>
-    <div class="title-box">
-        <h1>My Resume Home Page</h1>
-        <h3>This website is a collection of web pages that may interest prospective employers.</h3>
-    </div>
+  </section>
 
-    <div class="links">
-        <ul>
-            <li><a href="./ResumeDownLoad.html" target="_blank">Download My Resume</a></li>
-            <li><a href="https://internmentmuseum.ca/" target="_blank" rel="noopener noreferrer">
-    WordPress website project I contributed to </a> </li>
-            <li><a href="./COSCLAB.html" target="_blank">Visit My COSC Lab Page</a></li>
-            <li><a href="./r_s_p_game.html" target="_blank">Play some Rock Paper Scissors Game</a></li>
-            </ul>
+  <!-- ABOUT -->
+  <section class="section">
+    <div class="container">
+      <h2 class="reveal">About Me</h2>
+      <p class="reveal">
+        I have a strong foundation in programming, networking, and system fundamentals.
+        Skilled in socket programming, basic system administration, Microsoft Windows (system configuration & troubleshooting) & Linux environment, Security fundamentals (CompTIA Security+ in progress).
+        I am working with Visual Studio, Visual Studio Code, DrRacket, Vim, Emacs, Git, Docker, PuTTY, Kali Linux and more.
+      </p>
     </div>
-    
-<script>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section">
+    <div class="container grid">
+      <div class="card reveal">Java</div>
+      <div class="card reveal">C#</div>
+      <div class="card reveal">JavaScript</div>
+      <div class="card reveal">Networking</div>
+      <div class="card reveal">C++</div>
+      <div class="card reveal">C</div>
+      <div class="card reveal">R5RS (Scheme)</div>
+      <div class="card reveal">Assembly</div>
+       <div class="card reveal">SQL</div>
+      <div class="card reveal">PHP</div>
+      <div class="card reveal">UDP</div>
+      <div class="card reveal">TCP</div>
+      <div class="card reveal">HTML</div>
+      <div class="card reveal">CSS</div>
+      <div class="card reveal">Bash </div>
+      <div class="card reveal">Database</div>         
+    </div>
+  </section>
+
+<section class="projects">
+
+  <div class="projects-sticky">
+    <div class="projects-track">
+
+      <div class="project panel">
+        <h3>Resume Website</h3>
+        <a href="./ResumeDownLoad.html">View</a>
+      </div>
+
+      <div class="project panel">
+        <h3>WordPress Website</h3>
+        <a href="https://internmentmuseum.ca">View</a>
+      </div>
+
+      <div class="project panel">
+        <h3>COSC Lab</h3>
+        <a href="./COSCLAB.html">View</a>
+      </div>
+
+      <div class="project panel">
+        <h3>Rock Paper Scissors</h3>
+        <a href="./r_s_p_game.html">Play</a>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+  <!-- CONTACT -->
+  <section class="section contact">
+    <div class="container">
+      <h2 class="reveal">Contact</h2>
+      <p class="reveal">kikenaanhelyna@gmail.com</p>
+    </div>
+  </section>
+
+  <script>
+  const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+  const triggerBottom = window.innerHeight * 0.85;
+
+  reveals.forEach(el => {
+    const rect = el.getBoundingClientRect();
+
+    if (rect.top < triggerBottom) {
+      el.classList.add("active");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+
+const track = document.querySelector(".projects-track");
+const section = document.querySelector(".projects");
+
+window.addEventListener("scroll", () => {
+  const rect = section.getBoundingClientRect();
+  const scrollProgress = -rect.top / (rect.height - window.innerHeight);
+
+  const maxTranslate = track.scrollWidth - window.innerWidth;
+
+  if (scrollProgress >= 0 && scrollProgress <= 1) {
+    track.style.transform = `translateX(-${scrollProgress * maxTranslate}px)`;
+  }
+});
 const cursor = document.getElementById("cc-dom");
 
 document.addEventListener("mousemove", function(e) {
@@ -35,7 +126,5 @@ document.addEventListener("mousemove", function(e) {
     cursor.style.top = e.clientY + "px";
 });
 </script>
-
-
 </body>
 </html>
