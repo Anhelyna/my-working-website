@@ -44,8 +44,16 @@ Runs on port: 3306
 
 This repository includes selected examples of my work in:
 
-### **Assembly Language** – low-level programming, memory operations, and system-level logic  
+### **Assembly Language**  
+Low-level programming, memory operations, and system-level logic  
 
-### **Java** – object-oriented programming, data structures, and application development  
+### **C Programming**  
+Systems programming, process management (fork, pipes), and parallel/concurrent computation. Includes lab work focused on low-level problem solving and performance-oriented design.  
 
-All projects were completed as part of my academic coursework.
+### **Java**  
+Object-oriented programming, data structures, and application development  
+
+### **R5RS (Scheme)**  
+Functional programming concepts, recursion, and symbolic computation  
+
+All projects were completed as part of my academic coursework, including lab assignments and practical implementations.
