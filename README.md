@@ -50,8 +50,17 @@ Low-level programming, memory operations, and system-level logic
 ### **C Programming**  
 Systems programming, process management (fork, pipes), and parallel/concurrent computation. Includes lab work focused on low-level problem solving and performance-oriented design.  
 
+### **C++**  
+Object-oriented and procedural programming, memory management, and performance-focused applications 
+
+### **C#**  
+Application development using .NET, including GUI-based projects and object-oriented design
+
 ### **Java**  
 Object-oriented programming, data structures, and application development  
+
+### **SQL**  
+Database design, querying, data manipulation, and relational database management
 
 ### **R5RS (Scheme)**  
 Functional programming concepts, recursion, and symbolic computation  
